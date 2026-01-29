@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veridian Estate | Paisajismo Residencial de Lujo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a1d; /* Verde Bosque Profundo */
+            --accent: #a39274;  /* Dorado Arena / Champagne */
+            --bg: #fdfcfb;      /* Blanco Hueso */
+            --text: #2d2d2d;
+            --light-gray: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        /* --- Navegación --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 3rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Submenú Simple */
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background: white;
+            top: 100%;
+            left: 0;
+            padding: 1rem;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .submenu li {
+            margin: 0.5rem 0;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: linear-gradient(to right, rgba(253,252,251,0.9), rgba(253,252,251,0.1)), 
+                        url('https://images.unsplash.com/photo-1558905619-1725426120c2?auto=format&fit=crop&q=80&w=2000') center/cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* --- Servicios / Grid --- */
+        .services {
+            padding: 10rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 0;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: 0.5s;
+        }
+
+        .card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 2rem 0;
+        }
+
+        .card-body h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* --- Cuidado y Recomendaciones --- */
+        .care-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .care-text {
+            flex: 1;
+            padding-right: 5%;
+        }
+
+        .care-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .care-image {
+            flex: 1;
+        }
+
+        .care-image img {
+            width: 100%;
+            border-radius: 2px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 5rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .care-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><span>VE</span> VERIDIAN ESTATE</a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#servicios">Servicios</a>
+                <ul class="submenu">
+                    <li><a href="#">Diseño Curatorial</a></li>
+                    <li><a href="#">Instalación VIP</a></li>
+                    <li><a href="#">Sistemas de Riego</a></li>
+                </ul>
+            </li>
+            <li><a href="#proyectos">Portafolio</a></li>
+            <li><a href="#cuidados">Cuidados</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Esculpiendo la naturaleza para su hogar.</h1>
+            <p>Diseño de paisajes residenciales de alta gama que fusionan la arquitectura moderna con el alma de la tierra.</p>
+            <a href="#contacto" class="btn">Solicitar Consultoría Privada</a>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="section-title">
+            <span>EXCELENCIA EN DISEÑO</span>
+            <h2>Nuestros Servicios</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800" alt="Jardín Minimalista">
+                <div class="card-body">
+                    <h3>Arquitectura de Jardines</h3>
+                    <p>Planificación maestra que respeta la topografía y el clima local, creando santuarios privados únicos.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=800" alt="Agua y Piedra">
+                <div class="card-body">
+                    <h3>Hardscaping de Lujo</h3>
+                    <p>Uso de materiales nobles como piedra natural y maderas tratadas para estructuras permanentes de gran estética.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&q=80&w=800" alt="Iluminación Exterior">
+                <div class="card-body">
+                    <h3>Iluminación Escénica</h3>
+                    <p>Transformamos su jardín en un espectáculo visual nocturno con sistemas de iluminación LED de bajo consumo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="care-section" id="cuidados">
+        <div class="care-text">
+            <h2>El Arte del Mantenimiento</h2>
+            <p>Un jardín de alto nivel requiere una atención meticulosa. Recomendamos un ciclo de nutrición orgánica trimestral y podas de formación que respeten la silueta natural de cada especie.</p>
+            <br>
+            <p>Nuestra guía exclusiva para clientes incluye:</p>
+            <ul style="margin-top: 1rem; list-style-position: inside;">
+                <li>Gestión inteligente hídrica.</li>
+                <li>Control biológico de especies.</li>
+                <li>Calendario de floración estacional.</li>
+            </ul>
+        </div>
+        <div class="care-image">
+            <img src="https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&q=80&w=800" alt="Mantenimiento de Jardín">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">VERIDIAN ESTATE</div>
+        <p>• México</p>
+        <div class="footer-copy">
+            &copy; 2026 Veridian Estate Landscapes. Todos los derechos reservados. <br>
+            Diseño de Interiores y Exteriores de Alta Gama.
+        </div>
+    </footer>
+
+</body>
+</html>
