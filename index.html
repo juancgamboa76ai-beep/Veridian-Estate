@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veridian Estate | Paisajismo Residencial de Lujo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #1a2a1d; /* Verde Bosque Profundo */
-            --accent: #a39274;  /* Dorado Arena / Champagne */
-            --bg: #fdfcfb;      /* Blanco Hueso */
+            --primary: #1a2a1d;
+            /* Verde Bosque Profundo */
+            --accent: #a39274;
+            /* Dorado Arena / Champagne */
+            --bg: #fdfcfb;
+            /* Blanco Hueso */
             --text: #2d2d2d;
             --light-gray: #f4f4f4;
         }
@@ -32,7 +38,9 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 400;
         }
@@ -46,7 +54,8 @@
             position: absolute;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(26, 42, 29, 0.8), transparent); /* Gradiente sutil para legibilidad */
+            background: linear-gradient(to bottom, rgba(26, 42, 29, 0.8), transparent);
+            /* Gradiente sutil para legibilidad */
         }
 
         .logo-container {
@@ -56,10 +65,12 @@
         }
 
         .logo-img {
-            height: 60px; /* Tamaño ajustado para elegancia */
+            height: 60px;
+            /* Tamaño ajustado para elegancia */
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); /* Sombra suave para destacar sobre el fondo */
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            /* Sombra suave para destacar sobre el fondo */
         }
 
         .nav-links {
@@ -74,13 +85,14 @@
 
         .nav-links a {
             text-decoration: none;
-            color: white; /* Cambio a blanco para contraste con el Hero */
+            color: white;
+            /* Cambio a blanco para contraste con el Hero */
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 500;
             transition: 0.3s;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .nav-links a:hover {
@@ -88,7 +100,7 @@
         }
 
         /* Submenú */
-        .dropdown:hover .submenu {
+        .dropdown:hover>.submenu {
             display: block;
             opacity: 1;
             transform: translateY(0);
@@ -102,8 +114,8 @@
             top: 100%;
             left: -1rem;
             padding: 1.5rem;
-            min-width: 220px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-width: 260px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-top: 3px solid var(--accent);
             transform: translateY(10px);
             transition: all 0.3s ease;
@@ -112,16 +124,59 @@
         .submenu li {
             margin: 0.8rem 0;
             margin-left: 0;
+            position: relative;
         }
 
         .submenu a {
-            color: var(--primary); /* Texto oscuro dentro del menú blanco */
+            color: var(--primary);
+            /* Texto oscuro dentro del menú blanco */
             text-shadow: none;
-            display: block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .submenu a span {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 0.5;
         }
 
         .submenu a:hover {
-            padding-left: 5px; /* Pequeño desplazamiento al hacer hover */
+            padding-left: 5px;
+            /* Pequeño desplazamiento al hacer hover */
+            color: var(--accent);
+        }
+
+        /* Sub-submenú (Niveles adicionales) */
+        .dropdown-submenu:hover>.sub-submenu {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .sub-submenu {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            top: -1.5rem;
+            left: 100%;
+            background: white;
+            padding: 1.5rem;
+            min-width: 240px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 3px solid var(--accent);
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .sub-submenu li {
+            margin: 0.8rem 0;
+        }
+
+        .sub-submenu a {
+            display: block;
         }
 
         /* --- Hero Section --- */
@@ -131,14 +186,15 @@
             align-items: center;
             padding: 0 5%;
             /* Integración de la Imagen Principal - ACTUALIZADO A PNG LOCAL */
-            background: linear-gradient(to right, rgba(26, 42, 29, 0.7), rgba(26, 42, 29, 0.2)), 
-                        url('Imagen_Principal.png') center/cover no-repeat;
+            background: linear-gradient(to right, rgba(26, 42, 29, 0.7), rgba(26, 42, 29, 0.2)),
+                url('imagen_principal.png') center/cover no-repeat;
             position: relative;
         }
 
         .hero-content {
             max-width: 700px;
-            color: white; /* Texto blanco sobre la imagen oscura */
+            color: white;
+            /* Texto blanco sobre la imagen oscura */
         }
 
         .hero-content h1 {
@@ -146,7 +202,7 @@
             line-height: 1.1;
             margin-bottom: 2rem;
             color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero-content p {
@@ -212,18 +268,19 @@
             padding: 0;
             overflow: hidden;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .image-container {
             width: 100%;
-            height: 400px; /* Altura fija para uniformidad */
+            height: 400px;
+            /* Altura fija para uniformidad */
             overflow: hidden;
         }
 
@@ -312,7 +369,7 @@
             width: 100%;
             position: relative;
             z-index: 1;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         /* --- Footer --- */
@@ -331,7 +388,8 @@
 
         .footer-logo img {
             width: 100%;
-            filter: grayscale(100%); /* Logo monocromático en footer para elegancia */
+            filter: grayscale(100%);
+            /* Logo monocromático en footer para elegancia */
             opacity: 0.8;
         }
 
@@ -342,36 +400,76 @@
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .nav-links { display: none; }
-            .care-section { flex-direction: column; }
-            .care-text { padding-right: 0; margin-bottom: 3rem; }
-            .card img { height: 300px; }
-            .care-image::before { display: none; }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .care-section {
+                flex-direction: column;
+            }
+
+            .care-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .card img {
+                height: 300px;
+            }
+
+            .care-image::before {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
         <!-- Integración del Logo - ACTUALIZADO A PNG LOCAL -->
         <a href="#" class="logo-container">
-            <img src="Logo.png" alt="Veridian Estate Logo" class="logo-img">
+            <img src="logo.png" alt="Veridian Estate Logo" class="logo-img">
         </a>
-        
+
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li class="dropdown">
                 <a href="#servicios">Servicios</a>
                 <ul class="submenu">
-                    <li><a href="#diseno">Diseño Curatorial</a></li>
-                    <li><a href="#hardscaping">Hardscaping</a></li>
-                    <li><a href="#iluminacion">Iluminación</a></li>
+                    <li class="dropdown-submenu">
+                        <a href="diseno-curatorial.html">Diseño Curatorial <span>&rsaquo;</span></a>
+                        <ul class="sub-submenu">
+                            <li><a href="diseno-curatorial.html#diseno-planificacion">Planificación Maestra</a></li>
+                            <li><a href="diseno-curatorial.html#diseno-botanico">Selección Botánica</a></li>
+                            <li><a href="diseno-curatorial.html#diseno-3d">Visualización 3D</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="hardscaping.html">Hardscaping y Estructuras <span>&rsaquo;</span></a>
+                        <ul class="sub-submenu">
+                            <li><a href="hardscaping.html#hard-pergolas">Pérgolas y Cenadores</a></li>
+                            <li><a href="hardscaping.html#hard-terrazas">Terrazas y Decks</a></li>
+                            <li><a href="hardscaping.html#hard-fuego">Zonas de Fuego y Piedra</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="iluminacion.html">Iluminación Escénica <span>&rsaquo;</span></a>
+                        <ul class="sub-submenu">
+                            <li><a href="iluminacion.html#ilu-arquitectonica">Ilum. Arquitectónica</a></li>
+                            <li><a href="iluminacion.html#ilu-botanica">Resalte Botánico</a></li>
+                            <li><a href="iluminacion.html#ilu-sistemas">Sistemas Inteligentes</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
-            <li><a href="#proyectos">Portafolio</a></li>
-            <li><a href="#cuidados">Cuidados</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="Portafolio.html">Portafolio</a></li>
+            <li><a href="cuidados.html">Cuidados</a></li>
+            <li><a href="contact.html">Contacto</a></li>
         </ul>
     </nav>
 
@@ -379,8 +477,9 @@
     <section class="hero" id="inicio">
         <div class="hero-content">
             <h1>Esculpiendo la naturaleza para su hogar.</h1>
-            <p>Diseño de paisajes residenciales de alta gama que fusionan la arquitectura moderna con el alma de la tierra.</p>
-            <a href="#contacto" class="btn">Solicitar Consultoría Privada</a>
+            <p>Diseño de paisajes residenciales de alta gama que fusionan la arquitectura moderna con el alma de la
+                tierra.</p>
+            <a href="contact.html" class="btn">Solicitar Consultoría Privada</a>
         </div>
     </section>
 
@@ -394,36 +493,39 @@
             <!-- Tarjeta 1: Diseño Curatorial - ACTUALIZADO A PNG LOCAL -->
             <div class="card" id="diseno">
                 <div class="image-container">
-                    <img src="Diseno_Curatorial.png" alt="Diseño Curatorial y Planificación">
+                    <img src="diseño_curatorial.png" alt="Diseño Curatorial y Planificación">
                 </div>
                 <div class="card-body">
                     <h3>Diseño Curatorial</h3>
-                    <p>Planificación maestra visualizada digitalmente, fusionando sus deseos con nuestra experiencia botánica y arquitectónica.</p>
-                    <a href="#" class="card-link">Ver Detalles</a>
+                    <p>Planificación maestra visualizada digitalmente, fusionando sus deseos con nuestra experiencia
+                        botánica y arquitectónica.</p>
+                    <a href="diseno-curatorial.html" class="card-link">Ver Detalles</a>
                 </div>
             </div>
 
             <!-- Tarjeta 2: Hardscaping (Imagen Adicional) - ACTUALIZADO A PNG LOCAL -->
             <div class="card" id="hardscaping">
                 <div class="image-container">
-                    <img src="Hardscaping.png" alt="Hardscaping de Lujo">
+                    <img src="hardscaping.png" alt="Hardscaping de Lujo">
                 </div>
                 <div class="card-body">
                     <h3>Hardscaping & Estructuras</h3>
-                    <p>Pérgolas, fogones y estructuras en piedra natural y maderas nobles que definen la permanencia del espacio exterior.</p>
-                    <a href="#" class="card-link">Ver Detalles</a>
+                    <p>Pérgolas, fogones y estructuras en piedra natural y maderas nobles que definen la permanencia del
+                        espacio exterior.</p>
+                    <a href="hardscaping.html" class="card-link">Ver Detalles</a>
                 </div>
             </div>
 
             <!-- Tarjeta 3: Iluminación - ACTUALIZADO A PNG LOCAL -->
             <div class="card" id="iluminacion">
                 <div class="image-container">
-                    <img src="Iluminacion.png" alt="Iluminación Escénica Nocturna">
+                    <img src="iluminación.png" alt="Iluminación Escénica Nocturna">
                 </div>
                 <div class="card-body">
                     <h3>Iluminación Escénica</h3>
-                    <p>Transformamos la noche en una experiencia sensorial mediante sistemas de luz cálida estratégica y eficiente.</p>
-                    <a href="#" class="card-link">Ver Detalles</a>
+                    <p>Transformamos la noche en una experiencia sensorial mediante sistemas de luz cálida estratégica y
+                        eficiente.</p>
+                    <a href="iluminacion.html" class="card-link">Ver Detalles</a>
                 </div>
             </div>
         </div>
@@ -432,25 +534,29 @@
     <section class="care-section" id="cuidados">
         <div class="care-text">
             <h2>El Arte del Mantenimiento</h2>
-            <p>Un jardín de alto nivel requiere una atención meticulosa. Recomendamos un ciclo de nutrición orgánica trimestral y podas de formación que respeten la silueta natural de cada especie.</p>
+            <p>Un jardín de alto nivel requiere una atención meticulosa. Recomendamos un ciclo de nutrición orgánica
+                trimestral y podas de formación que respeten la silueta natural de cada especie.</p>
             <br>
             <p>Nuestra guía exclusiva para clientes incluye:</p>
             <ul style="margin-top: 1rem; list-style-position: inside; color: rgba(255,255,255,0.8);">
                 <li>Gestión inteligente hídrica.</li>
                 <li>Control biológico de especies.</li>
                 <li>Calendario de floración estacional.</li>
+                <a href="cuidados.html" class="btn">Ver Detalles</a>
+                </div>
             </ul>
         </div>
         <div class="care-image">
             <!-- Mantenemos la imagen de stock existente para esta sección, o podría actualizarse si generamos una específica -->
-            <img src="https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&q=80&w=800" alt="Mantenimiento de Jardín">
+            <img src="https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&q=80&w=800"
+                alt="Mantenimiento de Jardín">
         </div>
     </section>
 
     <footer>
         <div class="footer-logo">
-             <!-- Reutilización del logo en el footer - ACTUALIZADO A PNG LOCAL -->
-             <img src="Logo.png" alt="Veridian Estate">
+            <!-- Reutilización del logo en el footer - ACTUALIZADO A PNG LOCAL -->
+            <img src="logo.png" alt="Veridian Estate">
         </div>
         <p>• México •</p>
         <div class="footer-copy">
@@ -459,9 +565,9 @@
         </div>
     </footer>
 
-<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/02/12/02/20260212021549-43G4A9Z1.js" defer></script>
-    
-</body>
-</html>
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/02/12/02/20260212021549-43G4A9Z1.js" defer></script>
 
+</body>
+
+</html>
