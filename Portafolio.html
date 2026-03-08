@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Curatorial | Veridian Estate</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a1d;
+            /* Verde Bosque Profundo */
+            --accent: #a39274;
+            /* Dorado Arena / Champagne */
+            --bg: #fdfcfb;
+            /* Blanco Hueso */
+            --text: #2d2d2d;
+            --light-gray: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        /* --- Navegación --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(26, 42, 29, 0.8), transparent);
+            /* Gradiente sutil para legibilidad */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            /* Tamaño ajustado para elegancia */
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            /* Sombra suave para destacar sobre el fondo */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 3rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            /* Cambio a blanco para contraste con el Hero */
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            transition: 0.3s;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Submenú */
+        .dropdown:hover>.submenu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .submenu {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            background: white;
+            top: 100%;
+            left: -1rem;
+            padding: 1.5rem;
+            min-width: 260px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--accent);
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .submenu li {
+            margin: 0.8rem 0;
+            margin-left: 0;
+            position: relative;
+        }
+
+        .submenu a {
+            color: var(--primary);
+            /* Texto oscuro dentro del menú blanco */
+            text-shadow: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .submenu a span {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 0.5;
+        }
+
+        .submenu a:hover {
+            padding-left: 5px;
+            /* Pequeño desplazamiento al hacer hover */
+            color: var(--accent);
+        }
+
+        /* Sub-submenú (Niveles adicionales) */
+        .dropdown-submenu:hover>.sub-submenu {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .sub-submenu {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            top: -1.5rem;
+            left: 100%;
+            background: white;
+            padding: 1.5rem;
+            min-width: 240px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 3px solid var(--accent);
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .sub-submenu li {
+            margin: 0.8rem 0;
+        }
+
+        .sub-submenu a {
+            display: block;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            /* Integración de la Imagen Principal - ACTUALIZADO A PNG LOCAL */
+            background: linear-gradient(to right, rgba(26, 42, 29, 0.7), rgba(26, 42, 29, 0.2)),
+                url('imagen_principal.png') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: white;
+            /* Texto blanco sobre la imagen oscura */
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            border: 1px solid var(--accent);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* --- Servicios / Visual Menu --- */
+        .services {
+            padding: 10rem 5%;
+            background-color: var(--bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title span {
+            display: block;
+            color: var(--accent);
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 400px;
+            /* Altura fija para uniformidad */
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .card-body h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .card-body p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .card:hover .card-link {
+            border-bottom-color: var(--accent);
+        }
+
+        .video-container {
+            background: white;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-body {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .video-body h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .video-body p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Cuidado y Recomendaciones --- */
+        .care-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .care-text {
+            flex: 1;
+            padding-right: 5%;
+        }
+
+        .care-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .care-image {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Marco decorativo para la imagen de cuidados */
+        .care-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            z-index: 0;
+        }
+
+        .care-image img {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 5rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            background-color: #fff;
+        }
+
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 2rem;
+            max-width: 150px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            filter: grayscale(100%);
+            /* Logo monocromático en footer para elegancia */
+            opacity: 0.8;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .care-section {
+                flex-direction: column;
+            }
+
+            .care-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .card img {
+                height: 300px;
+            }
+
+            .care-image::before {
+                display: none;
+            }
+        }
+
+        /* Adicionales para páginas interiores - encabezado compartido con hero */
+        .page-header {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            background: linear-gradient(to right, rgba(26, 42, 29, 0.7), rgba(26, 42, 29, 0.2)),
+                url('imagen_principal.png') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 span {
+            color: var(--accent);
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+<nav>
+        <!-- Integración del Logo - ACTUALIZADO A PNG LOCAL -->
+        <a href="index.html#" class="logo-container">
+            <img src="logo.png" alt="Veridian Estate Logo" class="logo-img">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li class="dropdown">
+                <a href="index.html#servicios">Servicios</a>
+                <ul class="submenu">
+                                <li class="dropdown-submenu">
+                                    <a href="diseno-curatorial.html">Diseño Curatorial <span>&rsaquo;</span></a>
+                                    <ul class="sub-submenu">
+                                        <li><a href="diseno-curatorial.html#diseno-planificacion">Planificación Maestra</a></li>
+                                        <li><a href="diseno-curatorial.html#diseno-botanico">Selección Botánica</a></li>
+                                        <li><a href="diseno-curatorial.html#diseno-3d">Visualización 3D</a></li>
+                                    </ul>
+                                </li>
+                    <li class="dropdown-submenu">
+                        <a href="hardscaping.html">Hardscaping y Estructuras <span>&rsaquo;</span></a>
+                        <ul class="sub-submenu">
+                            <li><a href="hardscaping.html#hard-pergolas">Pérgolas y Cenadores</a></li>
+                            <li><a href="hardscaping.html#hard-terrazas">Terrazas y Decks</a></li>
+                            <li><a href="hardscaping.html#hard-fuego">Zonas de Fuego y Piedra</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="iluminacion.html">Iluminación Escénica <span>&rsaquo;</span></a>
+                        <ul class="sub-submenu">
+                            <li><a href="iluminacion.html#ilu-arquitectonica">Ilum. Arquitectónica</a></li>
+                            <li><a href="iluminacion.html#ilu-botanica">Resalte Botánico</a></li>
+                            <li><a href="iluminacion.html#ilu-sistemas">Sistemas Inteligentes</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="Portafolio.html">Portafolio</a></li>
+            <li><a href="index.html#cuidados">Cuidados</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <header class="page-header">
+        <h1>Diseño <span>Curatorial</span></h1>
+        <p>Planificación maestra visualizada digitalmente, fusionando sus deseos con nuestra experiencia botánica y arquitectónica.</p>
+    </header>
+    <section class="services">
+        <div class="video-container">
+            <video controls>
+                <source src="Video Proyecto.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="video-body">
+                <h3>Proyecto Destacado</h3>
+                <p>Visualización del proyecto realizado para un cliente en Condado de Zayavedra.</p>
+            </div>
+        </div>
+    </section>
+<footer>
+        <div class="footer-logo">
+            <!-- Reutilización del logo en el footer - ACTUALIZADO A PNG LOCAL -->
+            <img src="logo.png" alt="Veridian Estate">
+        </div>
+        <p>• México •</p>
+        <div class="footer-copy">
+            &copy; 2026 Veridian Estate Landscapes. Todos los derechos reservados. <br>
+            Diseño de Interiores y Exteriores de Alta Gama.
+        </div>
+    </footer>
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/02/12/02/20260212021549-43G4A9Z1.js" defer></script>
+</body>
+</html>
